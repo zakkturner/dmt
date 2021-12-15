@@ -1,0 +1,32 @@
+<section class="post">
+  <h1 class="post-title">Blog</h1>
+  <div class="post-container">
+    <mat-card class="post-card" *ngFor="let post of blogPosts">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title [innerHtml]="post.title.rendered"></mat-card-title>
+        <mat-card-subtitle
+          >By:
+          {{
+            post._embedded.author[0].name.charAt(0).toUpperCase() +
+              post._embedded.author[0].name.slice(1)
+          }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <div
+        class="post-image"
+        mat-card-image
+        [ngStyle]="{
+          background:
+            'url(' + post.featured_image_url + ') no-repeat center center/cover'
+        }"
+      ></div>
+      <mat-card-content>
+        <p [innerHtml]="post.excerpt.rendered | slice: 0:400"></p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Read More</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
