@@ -1,45 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+
 .header {
-  background: url("/assets/images/space4.png") no-repeat center center/cover;
-  height: 60em;
-  .stars {
-    height: 75em;
-    width: 100%;
-    background: url("/assets/images/stars.png") no-repeat center center/cover;
-    position: absolute;
-  }
+  background: url("/assets/images/galaxy.png") no-repeat center center/cover;
+  height: 100vh;
+  // .stars {
+  //   height: 75em;
+  //   width: 100%;
+  //   background: url("/assets/images/stars.png") no-repeat center center/cover;
+  //   position: absolute;
+  // }
+
   .mat-toolbar {
     height: 24%;
     width: 60%;
     margin: 0 auto;
     background: none !important;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     .logo-container {
       width: 8em;
       height: auto;
       padding: 2em 0;
       position: relative;
       z-index: 999;
+      justify-self: centerl;
       .logo {
         width: 100%;
         height: 100%;
       }
     }
-
-    .example-spacer {
-      flex: 1 1 auto;
+    .company-name-container {
+      justify-self: center;
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      .company-name {
+        color: #8bd1e4;
+        position: relative;
+        z-index: 999;
+        text-align: center;
+        font-size: 36px;
+        font-family: "Orbitron", sans-serif !important;
+        font-weight: 400;
+        font-style: italic;
+      }
     }
-
     .menu {
+      width: 2em;
+      height: 2em;
+      margin: 0 auto;
+      border-radius: 50%;
       position: relative;
       z-index: 999;
-      // background-color: transparent;
+      cursor: pointer;
       border: none;
       display: flex;
       justify-content: center;
       align-items: center;
-      mat-icon {
-        color: #f6d68d;
-        font-size: 40px;
+      background-color: #fff;
+      .icon {
+        color: #8bd1e4;
       }
     }
   }
