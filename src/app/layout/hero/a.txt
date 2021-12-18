@@ -1,0 +1,35 @@
+ @ViewChild('canvas') private canvasRef!: ElementRef;
+
+  private get canvas(): HTMLCanvasElement {
+    return this.canvasRef.nativeElement;
+  }
+
+  private scene!: THREE.Scene;
+  private camera!: THREE.Camera;
+  private renderer!: THREE.Renderer;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.createScene();
+  }
+
+  private createScene() {
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerWidth,
+      1,
+      1000
+    );
+    this.camera.position.z = 1;
+    this.camera.rotation.x = Math.PI / 2;
+
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.animate(this.renderer);
+  }
+  private animate(renderer: any) {
+    renderer(this.scene, this.camera);
+    requestAnimationFrame(this.animate);
+  }

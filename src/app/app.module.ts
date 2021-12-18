@@ -15,6 +15,7 @@ import { BlogService } from './blog.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './components/home/home.component';
+import { HeroComponent } from './layout/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomeComponent } from './components/home/home.component';
     SinglePostComponent,
     HeaderComponent,
     HomeComponent,
+    HeroComponent,
   ],
   imports: [
     BrowserModule,
