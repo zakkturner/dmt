@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 
 import * as THREE from 'three';
+import vertexShader from '../../../assets/shaders/vertex.glsl'
+
 
 @Component({
   selector: 'app-hero',
@@ -22,31 +24,39 @@ export class HeroComponent implements OnInit, AfterViewInit {
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
-  private renderer!: THREE.Renderer;
+  private renderer: any;
   private scene!: THREE.Scene;
-  private starGeo!: THREE.BufferGeometry;
+
+  // Fuction that creates the scene
   private createScene() {
-    // Scene
+    // Sets the Scene
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x000000);
-    // Camera
+
+    // Sets the Camera
     this.camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     );
-    this.camera.position.z = 10;
+    // Camera Position
+    this.camera.position.z = 15;
     this.camera.rotation.x - Math.PI / 2;
     this.scene.add(this.sphere);
   }
+
+  // Earth Mesh Creation
+
   sphere: THREE.Mesh = new THREE.Mesh(
     new THREE.SphereGeometry(5, 50, 50),
-    new THREE.MeshBasicMaterial({
-      // color: 0xff0000
-      map: new THREE.TextureLoader().load('/assets/images/earth2.jpg'),
+    new THREE.ShaderMaterial({
+     vertexShader: ,
+     fragmentShader:
     })
   );
+
+  // This function creates the renderer
   private startingRenderingLoop() {
     // Renderer
     this.renderer = new THREE.WebGLRenderer({
@@ -55,7 +65,10 @@ export class HeroComponent implements OnInit, AfterViewInit {
     });
 
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    let component: HeroComponent = this;
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Sets component variable to equal the Hero Component
+    const component: HeroComponent = this;
     (function render() {
       requestAnimationFrame(render);
 
@@ -67,6 +80,7 @@ export class HeroComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
+  // Initialize render
   ngAfterViewInit(): void {
     this.createScene();
     this.startingRenderingLoop();
