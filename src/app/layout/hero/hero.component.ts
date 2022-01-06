@@ -8,9 +8,8 @@ import {
 } from '@angular/core';
 
 import * as THREE from 'three';
-import vertexShader from '../../../assets/shaders/vertex.glsl'
-
-
+import vertexShader from '../../../assets/shaders/vertex.glsl';
+import fragmentShader from '../../../assets/shaders/fragment.glsl';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -51,8 +50,8 @@ export class HeroComponent implements OnInit, AfterViewInit {
   sphere: THREE.Mesh = new THREE.Mesh(
     new THREE.SphereGeometry(5, 50, 50),
     new THREE.ShaderMaterial({
-     vertexShader: ,
-     fragmentShader:
+      vertexShader,
+      fragmentShader,
     })
   );
 
